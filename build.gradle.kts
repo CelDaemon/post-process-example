@@ -17,7 +17,6 @@ base {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/post-process-example.classtweaker")
     splitEnvironmentSourceSets()
 
     val client by sourceSets.existing

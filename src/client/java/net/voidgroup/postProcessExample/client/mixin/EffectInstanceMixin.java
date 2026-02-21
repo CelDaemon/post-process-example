@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.shaders.Program;
 import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.ResourceProvider;
 import net.voidgroup.postProcessExample.PostProcessExample;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,13 +15,13 @@ import org.spongepowered.asm.mixin.injection.At;
 @Debug(export = true)
 @Mixin(EffectInstance.class)
 public class EffectInstanceMixin {
-    @WrapOperation(method = "<init>", at = @At(value = "NEW", target = "(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;"))
-    private ResourceLocation init(String path, Operation<ResourceLocation> original, ResourceManager resourceManager, String name) {
+    @WrapOperation(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/resources/ResourceLocation;withDefaultNamespace(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;"))
+    private ResourceLocation init(String path, Operation<ResourceLocation> original, ResourceProvider resourceProvider, String name) {
         return mapLocation(path, original, name, ".json");
     }
 
-    @WrapOperation(method = "getOrCreate", at = @At(value = "NEW", target = "(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;"))
-    private static ResourceLocation getOrCreate(String path, Operation<ResourceLocation> original, ResourceManager resourceManager, Program.Type type, String name) {
+    @WrapOperation(method = "getOrCreate", at = @At(value = "INVOKE", target = "Lnet/minecraft/resources/ResourceLocation;withDefaultNamespace(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;"))
+    private static ResourceLocation getOrCreate(String path, Operation<ResourceLocation> original, ResourceProvider resourceProvider, Program.Type type, String name) {
         return mapLocation(path, original, name, type.getExtension());
     }
 

@@ -15,7 +15,7 @@
             ]
         },
         {
-            "name": "blur",
+            "name": "box_blur",
             "intarget": "swap",
             "outtarget": "minecraft:main",
             "uniforms": [
@@ -30,7 +30,7 @@
             ]
         },
         {
-            "name": "blur",
+            "name": "box_blur",
             "intarget": "minecraft:main",
             "outtarget": "swap",
             "uniforms": [

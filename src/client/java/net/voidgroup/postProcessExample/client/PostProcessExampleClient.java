@@ -20,7 +20,7 @@ public class PostProcessExampleClient implements ClientModInitializer {
         ClientLifecycleEvents.CLIENT_STARTED.register(minecraft -> {
             client.setValue(minecraft);
             try {
-                chain.setValue(new PostChain(minecraft.getTextureManager(), minecraft.getResourceManager(), minecraft.getMainRenderTarget(), new ResourceLocation(PostProcessExample.MOD_ID, "shaders/post/inverse_red.json")));
+                chain.setValue(new PostChain(minecraft.getTextureManager(), minecraft.getResourceManager(), minecraft.getMainRenderTarget(), ResourceLocation.fromNamespaceAndPath(PostProcessExample.MOD_ID, "shaders/post/inverse_red.json")));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -30,12 +30,7 @@ public class PostProcessExampleClient implements ClientModInitializer {
             final var currentChain = chain.getValue();
             @SuppressWarnings("resource")
             final var strength = context.world().getGameTime() % 200 / 200.f;
-            currentChain.post_process_example$forEachPass(pass -> {
-                if(!pass.getName().equals("rendering-test:altered_vision"))
-                    return;
-
-                pass.post_process_example$setUniform("EffectStrength", strength);
-            });
+            currentChain.setUniform("EffectStrength", strength);
             currentChain.resize(target.width, target.height);
             currentChain.process(0);
             target.bindWrite(true);
