@@ -12,28 +12,26 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
-import java.util.function.UnaryOperator;
-
 @Debug(export = true)
 @Mixin(EffectInstance.class)
 public class EffectInstanceMixin {
     @WrapOperation(method = "<init>", at = @At(value = "NEW", target = "(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;"))
     private ResourceLocation init(String path, Operation<ResourceLocation> original, ResourceManager resourceManager, String name) {
-        return mapLocation(path, original, name, location -> location.withSuffix(".json"));
+        return mapLocation(path, original, name, ".json");
     }
 
     @WrapOperation(method = "getOrCreate", at = @At(value = "NEW", target = "(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;"))
     private static ResourceLocation getOrCreate(String path, Operation<ResourceLocation> original, ResourceManager resourceManager, Program.Type type, String name) {
-        return mapLocation(path, original, name, location -> location.withSuffix(type.getExtension()));
+        return mapLocation(path, original, name, type.getExtension());
     }
 
     @Unique
-    private static ResourceLocation mapLocation(String path, Operation<ResourceLocation> original, String name, UnaryOperator<ResourceLocation> operator) {
+    private static ResourceLocation mapLocation(String path, Operation<ResourceLocation> original, String name, String suffix) {
         final var location = ResourceLocation.tryParse(name);
 
         if(location == null || !location.getNamespace().equals(PostProcessExample.MOD_ID))
             return original.call(path);
 
-        return operator.apply(location.withPrefix("shaders/program/"));
+        return location.withPath(pathName -> "shaders/program/" + pathName + suffix);
     }
 }
