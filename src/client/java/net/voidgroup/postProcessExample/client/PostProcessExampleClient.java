@@ -38,6 +38,7 @@ public class PostProcessExampleClient implements ClientModInitializer {
             });
             currentChain.resize(target.width, target.height);
             currentChain.process(0);
+            target.bindWrite(true);
         });
     }
 }
