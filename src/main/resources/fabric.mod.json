@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "rendering-test",
+  "version": "${version}",
+  "name": "Rendering Test",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "unlicense",
+  "icon": "assets/rendering-test/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "net.voidgroup.renderingTest.client.RenderingTestDataGenerator"
+    ],
+    "client": [
+      "net.voidgroup.renderingTest.client.RenderingTestClient"
+    ],
+    "main": [
+      "net.voidgroup.renderingTest.RenderingTest"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "rendering-test.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "accessWidener": "rendering-test.classtweaker"
+}

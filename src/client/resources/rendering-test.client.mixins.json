@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.voidgroup.renderingTest.client.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "EffectInstanceMixin",
+    "PostChainMixin",
+    "PostPassMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

@@ -1,0 +1,4 @@
+classTweaker v1 named
+
+inject-interface net/minecraft/client/renderer/PostPass net/voidgroup/renderingTest/client/PostPassAccessor
+inject-interface net/minecraft/client/renderer/PostChain net/voidgroup/renderingTest/client/PostChainAccessor
