@@ -4,7 +4,7 @@
     ],
     "passes": [
         {
-            "name": "post-process-example:altered_vision",
+            "name": "post-process-example:inverse_red",
             "intarget": "minecraft:main",
             "outtarget": "swap",
             "uniforms": [

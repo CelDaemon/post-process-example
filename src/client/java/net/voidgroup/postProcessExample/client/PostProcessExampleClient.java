@@ -20,7 +20,7 @@ public class PostProcessExampleClient implements ClientModInitializer {
         ClientLifecycleEvents.CLIENT_STARTED.register(minecraft -> {
             client.setValue(minecraft);
             try {
-                chain.setValue(new PostChain(minecraft.getTextureManager(), minecraft.getResourceManager(), minecraft.getMainRenderTarget(), new ResourceLocation(PostProcessExample.MOD_ID, "shaders/post/altered_vision.json")));
+                chain.setValue(new PostChain(minecraft.getTextureManager(), minecraft.getResourceManager(), minecraft.getMainRenderTarget(), new ResourceLocation(PostProcessExample.MOD_ID, "shaders/post/inverse_red.json")));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

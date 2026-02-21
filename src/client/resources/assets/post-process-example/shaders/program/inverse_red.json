@@ -5,7 +5,7 @@
         "dstrgb": "zero"
     },
     "vertex": "blit",
-    "fragment": "post-process-example:altered_vision",
+    "fragment": "post-process-example:inverse_red",
     "attributes": [ "Position" ],
     "samplers": [
         { "name": "DiffuseSampler" }
