@@ -4,7 +4,7 @@
     ],
     "passes": [
         {
-            "name": "rendering-test:altered_vision",
+            "name": "post-process-example:altered_vision",
             "intarget": "minecraft:main",
             "outtarget": "swap",
             "uniforms": [

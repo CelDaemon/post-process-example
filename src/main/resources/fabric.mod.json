@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "rendering-test",
+  "id": "post-process-example",
   "version": "${version}",
-  "name": "Rendering Test",
+  "name": "Post Process Example",
   "description": "",
   "authors": [],
   "contact": {},
@@ -11,18 +11,18 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "net.voidgroup.renderingTest.client.RenderingTestDataGenerator"
+      "net.voidgroup.postProcessExample.client.RenderingTestDataGenerator"
     ],
     "client": [
-      "net.voidgroup.renderingTest.client.RenderingTestClient"
+      "net.voidgroup.postProcessExample.client.PostProcessExampleClient"
     ],
     "main": [
-      "net.voidgroup.renderingTest.RenderingTest"
+      "net.voidgroup.postProcessExample.PostProcessExample"
     ]
   },
   "mixins": [
     {
-      "config": "rendering-test.client.mixins.json",
+      "config": "post-process-example.client.mixins.json",
       "environment": "client"
     }
   ],
@@ -31,5 +31,5 @@
     "fabric-api": "*",
     "minecraft": "${minecraft_version}"
   },
-  "accessWidener": "rendering-test.classtweaker"
+  "accessWidener": "post-process-example.classtweaker"
 }

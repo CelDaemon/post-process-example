@@ -1,8 +1,8 @@
-package net.voidgroup.renderingTest.client.mixin;
+package net.voidgroup.postProcessExample.client.mixin;
 
 import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.client.renderer.PostPass;
-import net.voidgroup.renderingTest.client.PostPassAccessor;
+import net.voidgroup.postProcessExample.client.PostPassAccessor;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -14,7 +14,7 @@ public class PostPassMixin implements PostPassAccessor {
     private EffectInstance effect;
 
     @Override
-    public void rendering_test$setUniform(String name, float value) {
+    public void post_process_example$setUniform(String name, float value) {
         effect.safeGetUniform(name).set(value);
     }
 }

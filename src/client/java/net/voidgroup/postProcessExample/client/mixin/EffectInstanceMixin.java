@@ -1,4 +1,4 @@
-package net.voidgroup.renderingTest.client.mixin;
+package net.voidgroup.postProcessExample.client.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -6,8 +6,7 @@ import com.mojang.blaze3d.shaders.Program;
 import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.voidgroup.renderingTest.RenderingTest;
+import net.voidgroup.postProcessExample.PostProcessExample;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -32,7 +31,7 @@ public class EffectInstanceMixin {
     private static ResourceLocation mapLocation(String path, Operation<ResourceLocation> original, String name, UnaryOperator<ResourceLocation> operator) {
         final var location = ResourceLocation.tryParse(name);
 
-        if(location == null || !location.getNamespace().equals(RenderingTest.MOD_ID))
+        if(location == null || !location.getNamespace().equals(PostProcessExample.MOD_ID))
             return original.call(path);
 
         return operator.apply(location.withPrefix("shaders/program/"));
